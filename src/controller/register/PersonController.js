@@ -3,7 +3,7 @@ const Geo = require("./../../models/Register/Geolocalization");
 const ValidTokenAcess = require("./../../service/ValidTokenAcess");
 module.exports = {
   async index(request, response) {
-    const { token } = request.body;
+    const { token } = request.query;
 
     const { status, idUser, message } = await ValidTokenAcess(token);
 
