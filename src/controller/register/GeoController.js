@@ -43,11 +43,18 @@ module.exports = {
 
         geoReturn.coordinates = geo.location.coordinates;
       } else {
-        await Geo.update({
-          _id: geo._id,
-          idUser,
-          location
-        });
+        console.log(geo._id);
+        const respon = await Geo.updateOne(
+          {
+            idUser,
+            location
+          },
+          {
+            $set: {
+              _id: geo._id
+            }
+          }
+        );
       }
 
       return response.send(geoReturn);
