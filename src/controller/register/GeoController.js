@@ -46,15 +46,17 @@ module.exports = {
         console.log(geo._id);
         const respon = await Geo.updateOne(
           {
-            idUser,
-            location
+            _id: geo._id
           },
           {
             $set: {
-              _id: geo._id
+              idUser,
+              location
             }
           }
         );
+
+        console.log(respon);
       }
 
       return response.send(geoReturn);
